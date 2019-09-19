@@ -1,0 +1,63 @@
+{
+ "version":"1.0",
+ "client":"sharda",
+ "clientid":"sharda",
+ "netcheck":"on",
+ "netsite":"google.com",
+ "postresult":"on",
+ "writelog":"on",
+ "postseradd":"",
+ "dbuser":"SYSADM",
+ "dbpwd":"SYSADMDV",
+ "server":[
+    {
+     "servname":"PSCSDEV",
+     "servtype":"webserver",
+     "servip":"128.10.11.14",
+     "servport":"8090",
+     "servdns":"",
+     "servqry":""
+ },
+ {
+     "servname":"PSCSDEV",
+     "servtype":"app",
+     "servip":"128.10.11.14",
+     "servport":"9090",
+     "servdns":"",
+     "servqry":""
+ },
+ {
+     "servname":"PSCSDEV",
+     "servtype":"dbserver",
+     "servip":"128.10.11.15",
+     "servport":"1530",
+     "servdns":"PSCSDEV",
+     "servqry":"SELECT COUNT(*) FROM PS_INSTALLATION"
+     },
+{
+     "servname":"PSHRDEV",
+     "servtype":"dbserver",
+     "servip":"128.10.11.18",
+     "servport":"1120",
+     "servdns":"PSCSDEV",
+     "servqry":"SELECT COUNT(*) FROM PS_INSTALLATION"
+     },
+{
+     "servname":"PSHRDEV",
+     "servtype":"webserver",
+     "servip":"128.10.11.22",
+     "servport":"8020",
+     "servdns":"PSCSDEV",
+     "servqry":""
+     },
+{
+     "servname":"PSHRDEV",
+     "servtype":"app",
+     "servip":"128.10.11.22",
+     "servport":"14020",
+     "servdns":"PSCSDEV",
+     "servqry":""
+     }
+ ]
+
+}

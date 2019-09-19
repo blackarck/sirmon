@@ -1,0 +1,39 @@
+{
+ "version":"1.0",
+ "client":"pathways",
+ "clientid":"pathways",
+ "netcheck":"on",
+ "netsite":"google.com",
+ "postresult":"on",
+ "writelog":"on",
+ "postseradd":"",
+ "dbuser":" ",
+ "dbpwd":" ",
+ "server":[
+    {
+     "servname":"HR92DEV",
+     "servtype":"webserver",
+     "servip":"10.1.36.159",
+     "servport":"9600",
+     "servdns":"",
+     "servqry":""
+ },
+ {
+     "servname":"HR92DEV",
+     "servtype":"app",
+     "servip":"10.1.36.159",
+     "servport":"9610",
+     "servdns":"",
+     "servqry":""
+ },
+ {
+     "servname":"HR92DEV",
+     "servtype":"dbserver",
+     "servip":"10.1.36.158",
+     "servport":"",
+     "servdns":"ERPPRDRP\\SQL2012DEV1",
+     "servqry":"SELECT COUNT(*) FROM PS_INSTALLATION"
+     }
+ ]
+
+}

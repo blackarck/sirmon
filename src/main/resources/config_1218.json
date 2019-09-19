@@ -1,0 +1,39 @@
+{
+ "version":"1.0",
+ "client":"1218Internal",
+ "clientid":"1218",
+ "netcheck":"on",
+ "netsite":"google.com",
+ "postresult":"on",
+ "writelog":"on",
+ "postseradd":"https://lotto.hangbyte.com:8444/sirmonprcs",
+ "dbuser":" ",
+ "dbpwd":" ",
+ "server":[
+    {
+     "servname":"PSHCMDEV",
+     "servtype":"webserver",
+     "servip":"oc-130-162-70-246.compute.oraclecloud.com",
+     "servport":"8000",
+     "servdns":"",
+     "servqry":""
+ },
+ {
+     "servname":"PSHCMDEV",
+     "servtype":"app",
+     "servip":"fd27c7.compute-589997535.oraclecloud.internal",
+     "servport":"9033",
+     "servdns":"",
+     "servqry":""
+ },
+ {
+     "servname":"PSHCMDB",
+     "servtype":"dbserver",
+     "servip":"130.162.70.246",
+     "servport":"1522",
+     "servdns":"PSHCMDB",  
+     "servqry":"SELECT COUNT(*) FROM PS_INSTALLATION"
+     }
+ ]
+
+}
