@@ -1,5 +1,6 @@
 package com.sirmon.main;
 
+import com.google.api.client.util.IOUtils;
 import com.google.gson.Gson;
 import javax.net.ssl.SSLContext;
 import org.apache.http.HttpResponse;
@@ -9,6 +10,7 @@ import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
 import org.apache.http.conn.ssl.TrustStrategy;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
@@ -34,7 +36,7 @@ public class sendMsgHB {
             */
             //http.connect();
             Gson gson = new Gson();
-            StringEntity postingString = new StringEntity(gson.toJson(srv));
+            StringEntity postingString = new StringEntity(gson.toJson(srv),ContentType.APPLICATION_JSON);
             HttpPost post = new HttpPost(postUrl);
             
             TrustStrategy acceptingTrustStrategy = new TrustSelfSignedStrategy();
@@ -44,9 +46,11 @@ public class sendMsgHB {
             HttpClient httpClient = HttpClients.custom().setSSLSocketFactory(scsf).build();
             
            // HttpClient   httpClient    = HttpClientBuilder.create().build();
-            post.setEntity(postingString);
+           post.addHeader( "accept", "application/json") ;
             post.setHeader("Content-type", "application/json");
-            HttpResponse  response = httpClient.execute(post);   
+            post.setEntity(postingString);
+            HttpResponse  response = httpClient.execute(post);
+            
             System.out.println("Response is "+ response.toString());
         } catch (Exception e) {
             logwriter.logdata("Post message exception " + e.getLocalizedMessage());

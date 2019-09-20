@@ -131,6 +131,7 @@ public class serverdtl {
             con.close();
             if (qryCount==1){
               this.server_status = "Success-OK";
+              this.server_msg = "Query Count " + qryCount;
                  //System.out.println("DB Server working ok");
                    logwriter.logdata("DB Server " + server_ip + ":"  + server_port + " working ok");
             }

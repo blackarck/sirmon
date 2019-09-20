@@ -120,7 +120,9 @@ public class jsonRead {
             Iterator it = serverAL.iterator();
             while (it.hasNext()) {
                 // System.out.println("inside while "  );
-                sendmsg.postMessage((serverdtl) it.next(), post_ser_add);
+               serverdtl s = (serverdtl) it.next();
+                //System.out.println("Value of s is " + s.server_dns + s.server_name);
+               sendmsg.postMessage(s, post_ser_add);
             }
             //} else {
             //   logwriter.logdata("Main server " + post_ser_add + "  not reachable");

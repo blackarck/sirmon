@@ -21,7 +21,7 @@
  {
      "servname":"PSHCMDEV",
      "servtype":"app",
-     "servip":"fd27c7.compute-589997535.oraclecloud.internal",
+     "servip":"130.162.70.246",
      "servport":"9033",
      "servdns":"",
      "servqry":""
