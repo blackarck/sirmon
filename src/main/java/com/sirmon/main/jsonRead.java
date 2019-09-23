@@ -64,8 +64,9 @@ public class jsonRead {
                     
                     
                     String servertype = srv.server_type;
+                   
                     switch (servertype) {
-                        
+                      
                         case "webserver":
                              srv.pingServer();
                         serveral.add(srv);
@@ -80,7 +81,8 @@ public class jsonRead {
                         break;
                         
                         case "app" :
-                            srv.pingappServer();
+                            dbdetail dbdetail2 = new dbdetail(srv.server_name);
+                            srv.pingappServer(dbdetail2.domainpwd);
                             serveral.add(srv);
                              doresult = 1;
                             break;

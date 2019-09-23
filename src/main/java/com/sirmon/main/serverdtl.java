@@ -142,7 +142,7 @@ public class serverdtl {
         }
     }//end of pingdbserver
     
-    public void pingappServer(){
+    public void pingappServer(String domainpwd){
         writelog logwriter = new writelog();
          JoltSession session;
          JoltSessionAttributes sattr;
@@ -152,9 +152,11 @@ public class serverdtl {
          try{
          sattr = new JoltSessionAttributes(); 
         sattr.setString(sattr.APPADDRESS,"//" + server_ip + ":" + server_port );
+        
         sattr.setInt(sattr.IDLETIMEOUT, 300);
              System.out.println("Setting app server session");
-        session = new JoltSession(sattr,"","","","");
+             //JoltSession(JoltSessionAttributes attr, String userName, String userRole, String userPassword, String appPassword) 
+        session = new JoltSession(sattr,"","","",domainpwd);
         System.out.println("Sesison out " + session.toString());
         available=true;
          }catch(Exception ex){
