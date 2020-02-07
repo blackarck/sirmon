@@ -94,7 +94,7 @@ public class serverdtl {
         }
     }//end of pingserver
 
-    public void pingdbServer(String dbusername,String dbpass,String dbtype, boolean dbbolsrvcname,String dbsrvcname) {
+    public void pingdbServer(String dbusername,String dbpass,String dbtype, boolean dbbolsrvcname,String dbsrvcname, String[] envqrydtls, String inetsiteadd) {
         writelog logwriter = new writelog();
           int qryCount;
           qryCount=0;
@@ -128,12 +128,26 @@ public class serverdtl {
             }
             //step5 close the connection object  
             //System.out.println("result is " + qryCount);
-            con.close();
+           
             if (qryCount==1){
               this.server_status = "Success-OK";
               this.server_msg = "Query Count " + qryCount;
                  //System.out.println("DB Server working ok");
                    logwriter.logdata("DB Server " + server_ip + ":"  + server_port + " working ok");
+                   //this is where we will call rest of the queries and execute them. 04-02-2020
+                   int qryresult[]=new int[8];
+                    //run actual queries here  
+              qryresult[0]=qryResultCount(rs,stmt,envqrydtls[0]);
+              qryresult[1]=qryResultCount(rs,stmt,envqrydtls[1]);
+              qryresult[2]=qryResultCount(rs,stmt,envqrydtls[2]);
+              qryresult[3]=qryResultCount(rs,stmt,envqrydtls[3]);
+              qryresult[4]=qryResultCount(rs,stmt,envqrydtls[4]);
+              qryresult[5]=qryResultCount(rs,stmt,envqrydtls[5]);
+              qryresult[6]=qryResultCount(rs,stmt,envqrydtls[6]);
+              qryresult[7]=qryResultCount(rs,stmt,envqrydtls[7]);
+         
+                   callenvstats(qryresult,inetsiteadd);
+                    con.close();
             }
         } catch (Exception ex) {
             logwriter.logdata("Serverdtl db server exception " + ex.getLocalizedMessage());
@@ -141,6 +155,20 @@ public class serverdtl {
             logwriter.logdata("DB Error " + ex.getMessage());
         }
     }//end of pingdbserver
+    
+    public int qryResultCount(ResultSet rs, Statement stmt,String qry){
+        int i=0;
+          writelog logwriter = new writelog();
+        try{
+          rs = stmt.executeQuery(qry);
+          while (rs.next()) {
+              i=rs.getInt(1);
+            }
+        }catch(Exception ex){
+             logwriter.logdata("Serverdtl db server exception " + ex.getLocalizedMessage());
+        }
+        return i;
+    }//end of qryCount
     
     public void pingappServer(String domainpwd){
         writelog logwriter = new writelog();
@@ -170,5 +198,28 @@ public class serverdtl {
              logwriter.logdata("App server " + server_ip + ":"  + server_port + " working OK ");
          }
     }//ping app server
+    
+    public void callenvstats(int[] envqrydtls, String inetsiteadd){
+        envstats e = new envstats();
+        e.clientid = this.clientid;
+        e.prcsfail=String.valueOf(envqrydtls[0]);
+        e.prcspass=String.valueOf(envqrydtls[1]);
+        e.outsucc=String.valueOf(envqrydtls[2]);
+        e.outpend=String.valueOf(envqrydtls[3]);
+        e.outfail= String.valueOf(envqrydtls[4]);
+        e.inbsucc = String.valueOf(envqrydtls[5]);
+        e.inbfail =String.valueOf(envqrydtls[6]);
+        e.inbpend=String.valueOf(envqrydtls[7]); 
+        
+        checkInternet2 checknet = new checkInternet2();
+            if (checknet.testInet(inetsiteadd)) {
+                writelog logwriter = new writelog();
+                    logwriter.logdata("Internet working trying to post env results");
+                      sendMsgHB sendmsg=new sendMsgHB();
+                      String post_ser_add="https://lotto.hangbyte.com:8444/sirmonenvs";
+                        sendmsg.postenvMessage(e,post_ser_add );
+            }
+        
+    }//end of callenvstats
 
 }//end of class

@@ -1,0 +1,12 @@
+Feb 06, 2020 3:26:00 PM com.sirmon.main.writelog logdata
+INFO: Sending message to hang byte 
+Feb 06, 2020 3:26:08 PM com.sirmon.main.writelog logdata
+INFO: Closing call
+Feb 06, 2020 3:27:19 PM com.sirmon.main.writelog logdata
+INFO: Sending message to hang byte 
+Feb 06, 2020 3:27:25 PM com.sirmon.main.writelog logdata
+INFO: Closing call
+Feb 06, 2020 3:27:49 PM com.sirmon.main.writelog logdata
+INFO: Sending message to hang byte 
+Feb 06, 2020 3:27:55 PM com.sirmon.main.writelog logdata
+INFO: Closing call

@@ -1,0 +1,21 @@
+Feb 07, 2020 11:14:11 AM com.sirmon.main.writelog logdata
+INFO: Reading json file
+Feb 07, 2020 11:14:12 AM com.sirmon.main.writelog logdata
+INFO: Reading- PSHCMDEV ,server-  details.
+Feb 07, 2020 11:14:12 AM com.sirmon.main.writelog logdata
+INFO: Web Server working ok
+Feb 07, 2020 11:14:12 AM com.sirmon.main.writelog logdata
+INFO: Reading- PSHCMDB ,server-  details.
+Feb 07, 2020 11:14:12 AM com.sirmon.main.writelog logdata
+INFO: App Error Cannot connect to any //fd27c7.compute-589997535.oraclecloud.internal:9033.
+	Reason:NwHdlr: Cannot get address by name
+Feb 07, 2020 11:14:12 AM com.sirmon.main.writelog logdata
+INFO: Reading- PSHCMDB ,server- PSHCMDB details.
+Feb 07, 2020 11:14:16 AM com.sirmon.main.writelog logdata
+INFO: DB Server 130.162.70.246:1522 working ok
+Feb 07, 2020 11:14:16 AM com.sirmon.main.writelog logdata
+INFO: Internet working trying to post result
+Feb 07, 2020 11:14:16 AM com.sirmon.main.writelog logdata
+INFO: Sending message to hang byte 
+Feb 07, 2020 11:14:24 AM com.sirmon.main.writelog logdata
+INFO: Closing call

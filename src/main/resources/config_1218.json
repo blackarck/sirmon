@@ -34,6 +34,15 @@
      "servdns":"PSHCMDB",  
      "servqry":"SELECT COUNT(*) FROM PS_INSTALLATION"
      }
- ]
-
+ ],
+ "envstats":{
+  "prcsfail":"select count(*) as prcsfail from sysadm.PSPRCSRQST where to_char(rundttm,'ddmmyyyy')=to_char(sysdate-1,'ddmmyyyy')and runstatus in ('10','18','3')",
+  "prcspass":"select count(*) as prcspass from sysadm.PSPRCSRQST where to_char(rundttm,'ddmmyyyy')=to_char(sysdate-1,'ddmmyyyy')and runstatus in ('9','17','11')",
+  "outsucc":"select count(*) as outsucc from SYSADM.PSAPMSGPUBCON where PUBCONSTATUS =4 AND to_char(LASTUPDDTTM,'ddmmyyyy')=to_char(sysdate-1,'ddmmyyyy')",
+  "outpend":"select count(*) as outpend from SYSADM.PSAPMSGPUBCON where PUBCONSTATUS =1  AND to_char(LASTUPDDTTM,'ddmmyyyy')=to_char(sysdate-1,'ddmmyyyy')",
+  "outfail":"select count(*) as outfail from SYSADM.PSAPMSGPUBCON where PUBCONSTATUS =0  AND to_char(LASTUPDDTTM,'ddmmyyyy')=to_char(sysdate-1,'ddmmyyyy')",
+  "inbsucc":"select COUNT(*) as inbsucc from SYSADM.PSAPMSGSUBCON where SUBCONSTATUS =4 AND to_char(LASTUPDDTTM,'ddmmyyyy')=to_char(sysdate-1,'ddmmyyyy')",
+  "inbfail":"select count(*) as inbfail from SYSADM.PSAPMSGSUBCON where SUBCONSTATUS =0 AND to_char(LASTUPDDTTM,'ddmmyyyy')=to_char(sysdate-1,'ddmmyyyy')",
+  "inbpend":"select count(*) as inbpend from SYSADM.PSAPMSGSUBCON where SUBCONSTATUS =1 AND to_char(LASTUPDDTTM,'ddmmyyyy')=to_char(sysdate-1,'ddmmyyyy')",
+}
 }
